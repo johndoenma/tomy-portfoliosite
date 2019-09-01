@@ -1,0 +1,964 @@
+/* CSS TABLE OF CONTENTS
+
+# BASE CONTENT
+    # BASE TYPOGRAPHY
+        # HEADINGS
+        # PARAGRAPHS
+        # BLOCKQUOTES
+        # HELPERS
+    # MEDIA
+        # IMAGES
+    # COMPONENTS
+        # BUTTONS
+    # LAYOUT
+        # CONTAINER
+        # MEDIA CONTAINER
+        # GRID
+    # STRUCTURE
+        # HEADER
+        # SECTIONS
+        # FOOTER
+    ...#Navigation
+            #toggle nav
+
+*/
+html{
+  box-sizing: border-box;
+}
+
+ *, *::before, *::after{
+  box-sizing: inherit;
+}  
+
+body {
+    font-size: 87.5%; /* 1em = 14px */
+    line-height: 1.5em; /* 14px x 1.5 = 21px */
+    color: rgb(0, 73, 128);
+    margin: 0;
+    padding: 0;
+}
+
+h1
+{
+  font-family: 'Lora', 'Charter', serif;
+}
+
+h2,
+h3,
+h4,
+h5,
+p{
+    font-family: 'Raleway', 'Helvetica', sans-serif;
+}
+
+/* p{
+  font-family: 'Lora', serif;
+} */
+
+/* Traditional Typographic Scale
+  16, 18, 21, 24, 36, 48
+*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: .5em 0em;
+}
+
+h1 {
+  font-size: 3em; /* 48px / 16 = 3em */
+  line-height: 1em;
+}
+
+h2 {
+  font-size: 2.25em; /* 36px / 16 = 2.25em */
+  line-height: 1.1em;
+}
+
+h3 {
+  font-size: 1.5em; /* 24px / 16 = 1.5em */
+  line-height: 1.2em;
+}
+
+h4 {
+  font-size: 1.3125em; /* 21px / 16 = 1.3125em */
+  line-height: 1.3em;
+}
+
+h5 {
+  font-size: 1.125em; /* 18px / 16 = 1.125em */
+  line-height: 1.4em;
+}
+
+/* LINKS */
+a {
+  text-decoration: none;
+}
+
+/* PARAGRAPHS */
+p {
+  max-width: 35em;
+}
+
+/* IMAGES */
+img {
+  max-width: 100%; 
+  height: auto;
+}
+
+img:hover {
+  max-width: 95%;
+  transition: all .1s ease-out;
+}
+
+/* HELPERS */
+.text-centered {
+  text-align: center;
+  font-size: 1em;
+  text-transform: uppercase;
+}
+
+.sectionheader {
+  text-align: center;
+  font-size: 1em;
+  text-transform: uppercase;
+}
+.sectionheader::after{
+  content:"";
+  display: block;
+  height: 5px;
+  width: 100px;
+  margin: 1em auto 3em auto;
+}
+
+/* BUTTONS */
+/* button {
+  font-size: inherit;
+}
+
+a.button,
+.button,
+form input[type="submit"] {
+  display: inline-block;
+  background: none;
+  border: 1px solid  whitesmoke;
+  color: whitesmoke;
+  padding: 1em;
+  line-height: 1.2em;
+  text-align: center;
+  margin-top: 1em;
+  margin-bottom: .5em;
+  cursor: pointer;
+  font-family: sans-serif;
+}
+
+a.button:hover {
+  background: rgb(254, 110, 84);
+  color: #fff;
+  text-decoration: none;
+} */
+
+a.button.alt:hover 
+form input[type="submit"]:hover {
+  background:rgb(254, 110, 84);
+}
+
+/* MEDIA QUERIES 
+
+  #DEFAULT/#SMALL (Mobile First) 0-767px+
+  #MEDIUM: min-with: 768PX+
+  #LARGE: min-with: 1050PX+
+  #EXTRALARGE: min-with: 1250PX+
+
+*/
+
+/* SMALL+ (MOBILE FIRST) */
+body {
+  font-size: 87.5%;
+  margin: 0;
+  padding: 0;
+  background: rgba(255, 247, 202, .5);
+}
+
+.container {
+  width: 98%;
+  padding: 0 4%;
+  /* border: 1px solid red; */
+}
+
+body.demo:before {
+  content: 'Small (0-767px)';
+  display: block;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  text-align: center;
+}
+
+/* MEDIUM+ (TABLET) */
+@media (min-width: 768px) {
+
+  /* Inherit Small/Mobile CSS from Above */
+
+  body.demo:before {
+      content: 'Medium (768px-1049px)';
+  }
+}
+
+/* LARGE+ (NOTEBOOK) */
+@media (min-width: 1050px) {
+
+  /* Inherit Medium/Tablet CSS from Above */
+  body {
+      font-size: 100%;
+  }
+
+  .container {
+      width: 900px;
+      margin: 0 auto;
+      padding: 0 50px;
+  }
+
+  body.demo:before {
+      content: 'Large (1050px-1249px)';
+  }
+}
+
+/* EXTRALARGE+ (DESKTOP) */
+@media (min-width: 1250px) {
+body {
+      font-size: 112.5%;
+  }
+
+  body.demo:after {
+      content: 'ExtraLarge (1250px+)';
+  }
+}
+
+/* GRID */
+/* Default Grid (on SMALL+ Screen Sizes) */
+
+.row-layout,
+.row-logo,
+.row-motion,
+.row-web,
+.row-fineart,
+.column {
+  margin-bottom: 2%;
+}
+
+.one-third.column { 
+margin-bottom: 2em;
+}
+
+/* Medium Grid (on MEDIUM+ Screen Sizes) */
+@media (min-width: 768px) {
+  .row-layout,
+  .row-logo,
+  .row-web,
+  .row-motion,
+  .row-fineart
+ {
+      display: flex;
+      margin-left: -1%;
+      margin-right: -1%;
+  }
+
+  .row-layout,
+  .row-logo,
+  .row-motion,
+  .row-web,
+  .row-fineart,
+  .column {
+      flex-grow: 1;
+      /* margin-left: 1%; */
+      margin-right: 1%;
+  }
+
+    .column.centered {
+        flex-grow: 0;
+    }
+
+  .one-whole.column { 
+    width: 100%; 
+  }
+  .one-half.column { 
+    width: 48%; 
+  }
+  .three-eighths.column{
+    width: 35.5%;
+  }
+
+  .one-third.column { 
+    width: 31.3333%; 
+    padding-left: 3%;
+    padding-right:0;
+  }
+  .two-thirds.column { 
+    width: 64.6666%; 
+  }
+  .one-forth.column { 
+    width: 23%; 
+  }
+  .one-eighth.column {
+    width: 10.5%;
+  }
+}
+
+/* HEADER AND FOOTER */
+
+header, footer {
+  background: rgb(0, 73, 128);
+}
+
+.site-header a, 
+.site-footer a {
+  color: whitesmoke;
+  font-family: sans-serif;
+}
+
+.site-header a:hover,
+.site-footer a:hover {
+  color: rgb(254, 110, 84);
+  text-decoration: none;
+  transition: all .1s ease-out;
+}
+
+/* HEADER */
+
+.site-header {
+  padding-top: 1em;
+}
+
+@media (min-width: 768px) {
+  .site-header .container {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 0.75em;
+  }
+}
+
+/* BRANDING */
+
+.site-identity h1 {
+  font-size: 1.5em;
+  margin: 0;
+}
+
+.site-identity h1 a {
+  display: inline-block;
+  padding: .6em 0;
+  font-family: 'Lora', serif;
+}
+
+@media (min-width: 768px) {
+  .site-footer .container {
+      display: flex;
+      justify-content: center;
+      padding-bottom: 1em;
+  }
+}
+
+
+/* MAIN SECTION */
+
+.site-main {
+  padding-top: 1.5em; 
+}
+
+/* HERO */
+      
+.title {
+  padding: 3% 0; 
+  text-transform: uppercase;
+}
+
+.title h2 {
+  font-size: 2em;
+  border-bottom: 1px solid  rgb(0, 73, 128);
+  font-family: 'Raleway', 'Helvetica', sans-serif;
+}
+     
+.title h1 {
+    color: rgb(254, 110, 84);
+}
+
+h1.tomy {
+  opacity: .5;
+  font-size: 2.5em;
+}
+    
+h1.design {
+  /* position: relative; */
+  /* top:-19.5px; */
+  font-size: 2.5em;
+  /* left: 1em; */
+  line-height: .375em;
+  color: rgb(0, 73, 128);
+}
+    
+h1.portfolio{
+ /* position: relative;
+  top: -23.5px; */
+  font-size: 2.5em;
+  /* left: 2.5em; */
+  line-height: .2em;
+  color: rgb(0, 73, 128);
+  text-indent: 2em;
+}
+    
+@media (min-width: 500px) {
+  .title h2 {
+    font-size: 2.5em;
+  }
+       
+  h1.tomy {
+    font-size: 3em;
+  }
+      
+  h1.design {
+    /* position: relative; */
+    /* top:-19.5px; */
+    font-size: 3em;
+    /* left: 1em; */
+    line-height: .375em;
+  }
+      
+  h1.portfolio{
+   /* position: relative;
+    top: -23.5px; */
+    font-size: 3em;
+    /* left: 2.5em; */
+    line-height: .2em;
+  }
+
+}
+
+@media (min-width: 768px) {
+  .title h2 {
+    font-size: 3em; 
+  
+  }
+  
+  .title h1 {
+    font-size: 5em;
+  }
+
+  h1.tomy {
+    opacity: .5;
+  }
+
+  h1.design {
+    /* position: relative;
+    top:-35px;
+    left: 1em; */
+    line-height: .375em;
+  }
+
+  h1.portfolio{
+    /* position: relative;
+    top: -43px;
+    left: 2.5em; */
+    line-height: .2em;
+  }
+} 
+
+@media (min-width: 1050px) {
+  .title {
+    padding-bottom: 1%;
+  }
+   
+  .title h2 {
+    font-size: 3.5em;
+  }
+  .title h1 {
+    font-size: 5.75em;
+    line-height: .25em;
+  }
+
+  h1.tomy {
+    opacity: .5;
+  }
+    
+  h1.design{
+    /* position: relative;
+    top: -7px;
+    left: 1em; */
+  }
+    
+  h1.portfolio {
+    /* position: relative;
+    top: -13px;
+    left: 2.25em; */
+  }
+
+}
+    
+@media (min-width: 1295px) {
+  .title {
+    padding-bottom: 2em;
+    text-transform: uppercase; 
+  }
+    
+  .title h1 {
+    font-size: 6.5em;
+    line-height: .25em;
+  }
+    
+  h1.tomy {
+    opacity: .5;
+  }
+    
+  h1.design{
+    /* position: relative;
+    top: -7.75px;
+    left: 1em; */
+  }
+    
+  h1.portfolio {
+    /* position: relative;
+    top: -15px;
+    left: 2.25em; */
+  }
+  .title h2 {
+    font-size: 4em;
+  }
+}
+
+/* HEADINGS */
+#gallery,
+#about-me {
+  position: relative;
+}
+
+.vertical,
+.vertical2,
+.vertical-sub {
+  transform: rotate(0deg);
+  display: flex;
+  position: relative;
+  top: 0;
+  margin-left: 0;
+  justify-content: left;
+  transition: all .1s ease-out;
+  font-size: 2.5em;
+  color: rgb(254, 110, 84);
+  text-transform: uppercase;
+  font-style: italic;
+}
+
+#gallery .vertical-sub:hover{
+  opacity: .5;
+  transition: all .1s ease-out;
+}
+
+#gallery 
+.layout,
+.logo, 
+.motion,
+.web,
+.fineart {
+  margin-top: 3%;
+  text-transform: uppercase;
+  font-size: 2em;
+  opacity: .5;
+  color: rgb(254, 110, 84);
+} 
+
+#gallery ul li:hover{
+  font-size: 105%;
+  transition: all .1s ease-out;
+}
+
+@media (min-width: 500px) {
+.vertical,
+.vertical2,
+.vertical-sub {
+  font-size: 3em;
+}
+
+#gallery 
+.layout,
+.logo, 
+.motion,
+.web,
+.fineart {
+  margin-top: 3%;
+  font-size: 2em;
+} 
+}
+
+@media (min-width: 768px) {
+.vertical,
+.vertical2,
+.vertical-sub {
+  font-size: 4em;
+}
+} 
+
+@media (min-width: 1050px) {
+  .vertical{
+    position: absolute;
+    margin-top: 9%;
+    margin-left: -18vw;
+    transform: rotate(-90deg);
+    font-size: 4em;
+    opacity: .5;
+
+  }
+  
+  .vertical2 {
+    position: absolute;
+    margin-top: 15%;
+    margin-left: -19.75vw;
+    transform: rotate(-90deg);
+    font-size: 4em;
+    opacity: .5;
+  }
+
+  .vertical-sub {
+    position: fixed;
+    margin-top: 27%;
+    margin-left: -20vw;
+    transform: rotate(-90deg);
+    font-size: 4em;
+    opacity: .5;
+    }
+
+  #gallery 
+  .layout,
+  .logo,
+  .motion,
+  .web,
+  .fineart {
+    font-size: 2em;
+    opacity: 100;
+  }
+
+  #gallery .vertical-sub:hover{
+    opacity: 1;
+    transition: all .1s ease-out;
+  }
+  }
+
+@media (min-width: 1295px) {
+.vertical{
+  position: absolute;
+  margin-top: 8.5%;
+  margin-left: -22vw;
+  transform: rotate(-90deg);
+  font-size: 5em;
+  opacity: .5;
+}
+
+.vertical2 {
+  position: absolute;
+  margin-top: 15%;
+  margin-left: -24.75vw;
+  transform: rotate(-90deg);
+  font-size: 5em;
+  opacity: .5;
+}
+
+.vertical-sub {
+  position: fixed;
+  margin-top: 26%;
+  margin-left: -22vw;
+  transform: rotate(-90deg);
+  font-size: 5em;
+  opacity: .5;
+
+}
+
+#gallery 
+.layout,
+.logo,
+.motion,
+.web,
+.fineart {
+  font-size: 2em;
+  opacity: 100;
+}
+}
+
+@media (min-width: 1678px) {
+  .vertical{
+    margin-top: 7%;
+    margin-left: -16vw;
+    opacity: .5;
+  }
+  
+  .vertical2 {
+    margin-top: 11%;
+    margin-left: -17.5vw;
+    opacity: .5;
+  }
+  
+  .vertical-sub {
+    margin-top: 21%;
+    margin-left: -16vw;
+    opacity: .5;
+    position: fixed;
+  }
+
+  #gallery 
+  .layout,
+  .logo,
+  .motion,
+  .web,
+  .fineart {
+    font-size: 2em;
+    opacity: 100;
+  }
+  } 
+
+/* PARAGRAPH */
+
+.objective {
+    border-bottom: 1px solid  rgb(0, 73, 128);
+    padding-bottom: 2%;
+}
+
+.reason {
+  margin-top: -3%;
+  margin-bottom: 10%;
+}
+
+.objective-web {
+  border-bottom: 1px solid  rgb(0, 73, 128);
+  padding-bottom: 2%;
+}
+
+.book {
+  margin-top: -4%;
+  margin-bottom: -1%;
+}
+
+@media (min-width: 768px) {
+  .tri {
+    margin-top: -3%;
+    margin-right:2%;
+    margin-bottom: 3%;
+  }
+
+  .objective {
+    border-bottom: none;
+  }
+
+  .reason {
+    margin-top: -3%;
+    margin-bottom: 5%;
+  }
+
+  .book {
+    margin-top: -3%;
+    margin-bottom: -1%;
+  }
+
+  .objective-web {
+    border-bottom: 1px solid  rgb(0, 73, 128);
+    padding-bottom: 6%;
+  }
+}
+/* GALLERY */
+
+#gallery ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+#gallery {
+  padding-bottom: 5%;
+  margin-top: 5%;
+}
+
+.one-third.column h2 {
+  margin-top: -2%;
+  padding-top: 0;
+}
+
+@media (min-width: 1295px) {
+  #gallery {
+    padding-bottom: 7%;
+  }
+}
+
+/* ARTICLE */
+
+  article {
+    max-width: 35em;
+    margin-bottom: 10%;
+  }
+
+  article h2.subhead {
+font-weight: normal;
+font-size: 1.5em;
+line-height: 1.2;
+opacity: .7;
+  }
+
+  article p + h4 {
+    margin-top: 2em;
+  }
+
+/*LETS TALK*/
+
+#lets-talk {
+  margin-bottom: 3em;
+}
+
+#lets-talk h2 {
+ margin-top: .5em;
+ font-size: 3em;
+ border-bottom: none;
+ color: rgb(254, 110, 84);
+ text-transform: uppercase;
+ font-family: 'Lora', serif;
+}
+
+#lets-talk a {
+  font-family: sans-serif;
+  color: rgb(0, 73, 128);
+}
+
+#lets-talk a:hover{
+  color: rgb(254, 110, 84);
+}
+
+@media (min-width: 768px) {
+#lets-talk {
+  margin-bottom: 3em;
+}
+
+#lets-talk h2 {
+ margin-top: .5em;
+ font-size: 4em;
+}
+}
+
+@media (min-width:1050px) {
+#lets-talk h2 {
+  margin-top: 12%;
+  opacity: .5;
+  border-bottom: 1px solid  rgb(254, 110, 84);
+  font-size: 4em;
+}
+}
+
+
+/* SITE NAVIGATION*/
+
+.site-navigation ul {
+  border-top: 1px;
+  margin: 0;
+  padding: 0;
+}
+
+.site-navigation ul {
+  margin: 0;
+  padding: 0;
+}
+
+.site-navigation ul li {
+  list-style: none;
+  display: inline-block;
+}
+
+.site-navigation ul li a {
+  display: block;
+  padding: 1em 2em;
+  transition: all .4s ease;
+}
+
+@media (max-width:767px) {
+  .site-navigation ul li a:hover {
+    background: rgb(0, 73, 128);
+    color: white;
+  }
+}
+
+
+.site-footer .site-navigation ul {
+      border-top: none;    
+}
+
+/* MENU BUTTON */
+.menu-button {
+  position: absolute;
+  top: 1.5em;
+  right: 4%;
+}
+
+@media (min-width: 768px) {
+  .menu-button {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+}
+
+/* NAV ICON */
+
+.navicon {
+  cursor: default;
+}
+
+.navicon:after{
+  display: inline-block;
+  cursor: pointer;
+  content: "\2630";
+  font-size: 1.5em;
+  color: white;
+  margin-left: .5em; 
+  transition: all .1s ease-out;
+}
+
+.expanded .navicon::after {
+    content: "\2715";
+    transform: rotate(-90deg);
+    transition: all .4s ease-out;
+}
+
+/* TOGGLE NAV */
+
+@media (max-width: 767px) {
+
+  .site-header.toggle-nav {
+    text-align:left;
+  }
+
+  .toggle-nav .site-navigation ul li {
+    display: block;
+    text-align: center;
+  }
+  .toggle-nav .site-navigation ul {
+    display: none;
+  }
+
+  .toggle-nav .site-navigation.expanded ul{
+    display: block;
+  }
+
+}
+/* FOOTER */
+
+footer {
+  text-align: left;
+}
+
+.site-footer .container {
+  padding-top: 0;
+  padding-bottom: 1em;
+}
+
+.site-footer .container:before {
+  display: block;
+  content: '';
+  padding-bottom: 1em;
+}
+
+@media (max-width:767px) {
+  .site-footer, .site-navigation ul li a {
+    padding: .5em .5em;
+    text-align: center;
+  }
+}
